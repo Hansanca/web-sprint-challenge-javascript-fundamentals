@@ -197,13 +197,21 @@ console.log(consume("Mary", "Poppins", greeting)); // Hello Mary Poppins, nice t
 - Instances of CuboidMaker should initialize `length`, `width` and `height` properties
 */
 
-function CuboidMaker(metrics){
-  this.length = length;
-  this.width = width;
-  this.height = height;
+function CuboidMaker(metrics) {
+  this.length = metrics.length
+  this.width = metrics.width
+  this.height = metrics.height
 }
-const newCube = new CuboidMaker()
-newCube.length()
+
+CuboidMaker.prototype.volume = function() {
+  return this.length * this.width * this.height
+}
+
+CuboidMaker.prototype.surfaceArea = function() {
+  return (2 * this.length * this.width) + (2 * this.width * this.height) + (2 * this.height * this.length)
+}
+
+
 
 
 /* 🐴🐴🐴 Step 2: Volume Method 🐴🐴🐴
@@ -240,6 +248,19 @@ newCube.length()
 //Using CuboidMakerTwo, take your prototypes from above and refactor into class syntax. Then, create an object called cuboidTwo that uses the new keyword to use our CuboidMakerTwo class.
  
 class CuboidMakerTwo{
+ constructor (params) {
+   this.length = params.length
+   this.width = params.width
+   this.height = params.height
+ }
+ volume() {
+   return this.height * this.length * this.width
+ }
+ surfaceArea(params) {
+  return (2 * this.length * this.width) + (2 * this.width * this.height) + (2 * this.height * this.length)
+ }
+
+
 
 }
 
